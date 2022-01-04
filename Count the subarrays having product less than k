@@ -1,0 +1,18 @@
+class Solution:
+    def countSubArrayProductLessThanK(self, a, n, k):
+        #Code here
+        n=len(a)
+        res=0
+        p=1
+        start=0
+        end=0
+        while(end<n):
+            p*=a[end]
+            while(start<end and p>=k):
+                p=int(p//a[start])
+                start+=1
+            if(p<k):
+                c=end-start+1
+                res+=c
+            end+=1
+        return res

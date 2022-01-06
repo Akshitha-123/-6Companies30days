@@ -1,0 +1,14 @@
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        if not str1 or not str2: # if one of the strings are '', return the other one as the gcd
+            return str1 if str1 else str2
+        
+        # Input should alwas be gcd(larger, smaller)
+        if len(str2) > len(str1): # if str2 > str1, change their order
+            return self.gcdOfStrings(str2, str1)
+        
+        elif str1.startswith(str2): # if str1 > str2 and str1 starts with str2
+            return self.gcdOfStrings(str1[len(str2):], str2) # remove str2 from str1 and again call the function on what's left
+        
+        else:
+            return ''
